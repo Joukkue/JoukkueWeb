@@ -1,0 +1,7 @@
+{% extends 'navigation_base.html' %}
+
+{% block content %}
+{% for find, asd in quotes.items %}
+    <p>{{find}}: {{ asd }}</p>
+{% endfor %}
+{% endblock %}
