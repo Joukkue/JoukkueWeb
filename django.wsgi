@@ -1,7 +1,7 @@
 import os
 import sys
 
-path='/home/pi/JoukkuePage/JoukkuePage/django.wsgi'
+path='/home/pi/JoukkueWeb/django.wsgi'
 
 if path not in sys.path:
   sys.path.append(path)
