@@ -25,9 +25,13 @@ SECRET_KEY = '*bdx!&3^y7(kl2f9sjxbh-jozn$uus*+q38-vt)&@2q+xbt1sl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
-
+LOGIN_FAIL_URL = 'loginpage'
+LOGIN_SUCCESS_URL = 'home'
+LOGIN_URL = 'loginpage'
+EMAIL_CONFIRMATION_REQUIRED = False
+LOGIN_REDIRECT_URL = 'loginpage'
 # Application definition
 
 INSTALLED_APPS = [

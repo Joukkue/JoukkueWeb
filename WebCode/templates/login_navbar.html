@@ -1,0 +1,18 @@
+{% if  user.is_authenticated%}
+    <li><a>{{user.username}}</a> </li>
+    <li><a href={% url 'logout' %} class="highlight">Log out</a></li>
+{% else %}
+<li>
+  <form class="navbar-form navbar-left" action="{% url 'login' %}" method="post">
+
+  	<div class="form-group">
+    	{% csrf_token %}
+    	{{ loginform }}
+    </div>
+
+    <input type="submit" class="btn btn-default" value="Login"/>
+
+  </form>
+
+</li>
+{% endif %}
