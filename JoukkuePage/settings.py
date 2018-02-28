@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from sys import platform
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,8 +26,10 @@ SECRET_KEY = '*bdx!&3^y7(kl2f9sjxbh-jozn$uus*+q38-vt)&@2q+xbt1sl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.100"]
-
+if platform == "linux":
+    ALLOWED_HOSTS = ["192.168.0.100"]
+else:
+    ALLOWED_HOSTS = ["127.0.0.1"]
 LOGIN_FAIL_URL = 'loginpage'
 LOGIN_SUCCESS_URL = 'home'
 LOGIN_URL = 'loginpage'
