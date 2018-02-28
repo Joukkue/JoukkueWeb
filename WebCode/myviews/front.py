@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 import sqlite3
+from sys import platform
 from django.contrib.auth import authenticate, login, logout
 from django import forms
 from JoukkuePage import settings
@@ -29,7 +30,11 @@ def frontpage(request):
 
 @login_required
 def show(request):
-    connection = sqlite3.connect('joukkue.db')
+    if platform == "linux":
+        connection = sqlite3.connect('/home/pi/JoukkueBot/joukkue.db')
+    else:
+        connection = sqlite3.connect('joukkue.db')
+        #connection = sqlite3.connect('/home/pi/JoukkueBot/joukkue.db')
     c = connection.cursor()
     c.execute('SELECT * FROM Quotes')
     quotes = c.fetchall()
