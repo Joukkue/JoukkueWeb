@@ -96,14 +96,24 @@ def get_levels(request):
     else:
         connection = sqlite3.connect('joukkue.db')
     c = connection.cursor()
-    c.execute('SELECT * FROM Levels')
-    levels = c.fetchall()
-    context = getContext()
-    context['level'] = {}
-    counter = 0
-    for level in levels:
-        asd = {level[0]:level[3]}
-        context['level']["asd" + str(counter)] = asd
-        counter += 1
+    context = {}
+    my_dict = {}
+    c.execute("SELECT * FROM Chats ")
+    chats = c.fetchall()
+    for chat in chats:
+        my_dict[chat[0]] = {}
+        t = chat[1]
+        c.execute("SELECT * FROM Levels WHERE chat =? ORDER BY level DESC, experience DESC ", (t,))
+        levels = c.fetchall()
+        for level in levels:
+            exp_and_level = {level[2]:level[3]}
+            username_and_level = {level[0]:exp_and_level}
+            chat_and_username = {chat[0]:username_and_level}
+            my_dict[chat[0]][level[0]] = exp_and_level
+            context = {'my_dict': my_dict}
     #print (levels)
+    print(context)
+
+
+
     return render(request, "levels.html", context)

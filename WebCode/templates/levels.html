@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <style>
+<style>
 * {
     box-sizing: border-box;
 }
@@ -26,6 +26,9 @@
     width: 15%;
 }
 
+.switch {
+    font-size: 150%;
+}
 
 /* Clear floats after the columns */
 .row:after {
@@ -34,20 +37,24 @@
     clear: both;
 }
 </style>
-{% for tag, quote  in level.items %}
-    {% for text, user in quote.items %}
 
-    <div class="column tag">
-    <p>{{tag}}</p>
-    </div>
-
-    <div class="column quote">
-    <p>{{text}}</p>
-    </div>
-
-    <div class ="column user">
-    <p>{{ user }}</p>
-    </div>
+    {% for chat, chatter in my_dict.items%}
+        <div class="switch">
+        {{ chat }}
+        </div>
+        {% for user, experience_and_level in chatter.items%}
+            {% for level, exp in experience_and_level.items %}
+                <div class="column tag">
+                {{ user }}
+                </div>
+                <div class="column quote">
+                {{ level }}
+                </div>
+                <div class ="column user">
+                {{ exp }}
+                </div>
+                {% endfor %}
+        {% endfor %}
     {% endfor %}
-{% endfor %}
+
 {% endblock %}
