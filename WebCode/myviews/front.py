@@ -103,7 +103,7 @@ def get_levels(request):
     counter = 0
     for level in levels:
         asd = {level[0]:level[3]}
-        context['level']["asd" + counter] = asd
+        context['level']["asd" + str(counter)] = asd
         counter += 1
     #print (levels)
     return render(request, "levels.html", context)
