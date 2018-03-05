@@ -100,8 +100,10 @@ def get_levels(request):
     levels = c.fetchall()
     context = getContext()
     context['level'] = {}
+    counter = 0
     for level in levels:
-        asd = {level[2]:level[3]}
-        context['level'][level[0]] = asd
+        asd = {level[0]:level[3]}
+        context['level']["asd" + counter] = asd
+        counter += 1
     #print (levels)
     return render(request, "levels.html", context)
