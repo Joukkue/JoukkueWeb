@@ -89,3 +89,19 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form, 'loginform': loginform})
+
+def get_levels(request):
+    if platform == "linux":
+        connection = sqlite3.connect('/home/pi/JoukkueBot/joukkue.db')
+    else:
+        connection = sqlite3.connect('joukkue.db')
+    c = connection.cursor()
+    c.execute('SELECT * FROM Levels')
+    levels = c.fetchall()
+    context = getContext()
+    context['level'] = {}
+    for level in levels:
+        asd = {level[2]:level[3]}
+        context['level'][level[0]] = asd
+    #print (levels)
+    return render(request, "levels.html", context)

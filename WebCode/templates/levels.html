@@ -1,0 +1,53 @@
+{% extends 'navigation_base.html' %}
+
+
+{% block content %}
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    border: 1px solid lightslategray;
+}
+
+.tag {
+  width: 15%;
+}
+
+.quote {
+  width: 70%;
+}
+
+.user {
+    width: 15%;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+{% for tag, quote  in level.items %}
+    {% for text, user in quote.items %}
+
+    <div class="column tag">
+    <p>{{tag}}</p>
+    </div>
+
+    <div class="column quote">
+    <p>{{text}}</p>
+    </div>
+
+    <div class ="column user">
+    <p>{{ user }}</p>
+    </div>
+    {% endfor %}
+{% endfor %}
+{% endblock %}

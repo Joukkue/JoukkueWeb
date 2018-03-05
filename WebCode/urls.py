@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^quotes/$', front.show, name = 'quotes'),
     url(r'^loginpage/$', front.login_page,  name = 'loginpage'),
     url(r'^signup/$', front.signup, name = 'signup'),
+    url(r'^levels/$', front.get_levels, name = 'levels'),
 ]
