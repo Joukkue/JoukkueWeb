@@ -7,6 +7,7 @@ from JoukkuePage import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import HttpResponseRedirect
+from collections import OrderedDict
 
 
 
@@ -96,12 +97,12 @@ def get_levels(request):
     else:
         connection = sqlite3.connect('joukkue.db')
     c = connection.cursor()
-    context = {}
-    my_dict = {}
+    context = OrderedDict()
+    my_dict = OrderedDict()
     c.execute("SELECT * FROM Chats ")
     chats = c.fetchall()
     for chat in chats:
-        my_dict[chat[0]] = {}
+        my_dict[chat[0]] = OrderedDict()
         t = chat[1]
         c.execute("SELECT * FROM Levels WHERE chat =? ORDER BY level DESC, experience DESC ", (t,))
         levels = c.fetchall()

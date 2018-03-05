@@ -27,7 +27,7 @@ SECRET_KEY = '*bdx!&3^y7(kl2f9sjxbh-jozn$uus*+q38-vt)&@2q+xbt1sl'
 DEBUG = True
 
 if platform == "linux":
-    ALLOWED_HOSTS = ["192.168.0.100"]
+    ALLOWED_HOSTS = ["192.168.0.100", "82.130.18.234", "127.0.0.1"]
 else:
     ALLOWED_HOSTS = ["127.0.0.1"]
 LOGIN_FAIL_URL = 'loginpage'
@@ -128,5 +128,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+STATIC_ROOT = '/home/pi/JoukkueWeb/staticfiles'
 STATIC_URL = '/static/'
