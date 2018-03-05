@@ -99,7 +99,7 @@ def get_levels(request):
     c = connection.cursor()
     context = OrderedDict()
     my_dict = OrderedDict()
-    c.execute("SELECT * FROM Chats ")
+    c.execute("SELECT * FROM Chats ORDER BY name")
     chats = c.fetchall()
     for chat in chats:
         my_dict[chat[0]] = OrderedDict()
