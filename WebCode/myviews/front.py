@@ -37,14 +37,13 @@ def show(request):
         connection = sqlite3.connect('joukkue.db')
         #connection = sqlite3.connect('/home/pi/JoukkueBot/joukkue.db')
     c = connection.cursor()
-    c.execute('SELECT * FROM Quotes')
+    c.execute('SELECT find, quote, user FROM Quotes LEFT OUTER JOIN Users ON Quotes.userid = Users.userid')
     quotes = c.fetchall()
     context = getContext()
     context['quotes'] = {}
     for quote in quotes:
         asd = {quote[1]:quote[2]}
         context['quotes'][quote[0]] = asd
-    print (quotes)
     return render(request, "quotes.html", context)
 
 def login_user(request):
@@ -104,7 +103,7 @@ def get_levels(request):
     for chat in chats:
         my_dict[chat[0]] = OrderedDict()
         t = chat[1]
-        c.execute("SELECT * FROM Levels WHERE chat =? ORDER BY level DESC, experience DESC ", (t,))
+        c.execute("SELECT user, chat, level, experience FROM Levels LEFT OUTER JOIN Users ON Levels.userid = Users.userid WHERE chat =? ORDER BY level DESC, experience DESC ", (t,))
         levels = c.fetchall()
         for level in levels:
             exp_and_level = {level[2]:level[3]}
