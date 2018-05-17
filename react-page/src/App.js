@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './animu.jpg';
 import './App.css';
 
+
 class App extends Component {
-  render() {
+
+    render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header >
           <img src={logo} className="App-logo" alt="logo" />
+        </header>
+        <header>
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+         <a href="home" > <button type="button">
+          Back to Joukkue
+        </button></a>
       </div>
     );
   }

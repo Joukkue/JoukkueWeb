@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^loginpage/$', front.login_page,  name = 'loginpage'),
     url(r'^signup/$', front.signup, name = 'signup'),
     url(r'^levels/$', front.get_levels, name = 'levels'),
-    re_path('react', TemplateView.as_view(template_name='index.html')),
+    re_path('react', TemplateView.as_view(template_name='index.html'), name = 'react'),
 
 ]
