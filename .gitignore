@@ -4,3 +4,4 @@
 *.pyc
 migrations
 staticfiles
+__pycache__

@@ -84,12 +84,12 @@ WSGI_APPLICATION = 'JoukkuePage.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'joukkue' : {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'WebCode/myviews/joukkue.db'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'joukkue',
+        'USER': 'joukkue',
+        'PASSWORD': 'joukkue',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Helsinki'
 
 USE_I18N = True
 
