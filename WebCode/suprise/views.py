@@ -14,7 +14,7 @@ def clue(request):
 
 @login_required
 def view2(request):
-    if request.user.username == "admin":
+    if request.user.username == "Valtteri":
         return render(request, 'view2.html')
     else:
         return render(request, 'error.html')
