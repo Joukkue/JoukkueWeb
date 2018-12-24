@@ -11,3 +11,13 @@ def view1(request):
 
 def clue(request):
     return render(request, 'clue1.html')
+
+@login_required
+def view2(request):
+    if request.user.username == "admin":
+        return render(request, 'view2.html')
+    else:
+        return render(request, 'error.html')
+
+def clue2(request):
+    return render(request, 'clue2.html')
