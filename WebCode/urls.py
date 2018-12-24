@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from WebCode.myviews   import front
+from WebCode.suprise.views import view1, clue
 
 urlpatterns = [
     url(r'^$', front.frontpage, name = 'home'),
@@ -10,4 +11,6 @@ urlpatterns = [
     url(r'^loginpage/$', front.login_page,  name = 'loginpage'),
     url(r'^signup/$', front.signup, name = 'signup'),
     url(r'^levels/$', front.get_levels, name = 'levels'),
+    url(r'^jennanlahja/$', view1, name='lahja1'),
+    url(r'^credentials/$', clue),
 ]
