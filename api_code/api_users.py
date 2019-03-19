@@ -30,8 +30,9 @@ def update(request):
 
         #Update Levels
         user = TelegramUser.objects.get(userid=request.POST.get("userid"))
+        chat = TelegramChat.objects.get(chatid=request.POST.get('chatid'))
         try:
-            status = Levels.objects.get(userid=user)
+            status = Levels.objects.get(userid=user, chatid=chat)
         except:
             status = Levels(exp=0,level=0,userid=user,chatid=chat)
 
