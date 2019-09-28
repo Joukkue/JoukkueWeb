@@ -24,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*bdx!&3^y7(kl2f9sjxbh-jozn$uus*+q38-vt)&@2q+xbt1sl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if platform == "linux":
-    ALLOWED_HOSTS = ["192.168.0.100", "82.130.18.234", "127.0.0.1"]
+    ALLOWED_HOSTS = ["192.168.0.100", "82.130.18.234", "127.0.0.1", "88.112.128.152", "joukkue.ddns.net"]
 else:
     ALLOWED_HOSTS = ["127.0.0.1"]
 LOGIN_FAIL_URL = 'loginpage'
