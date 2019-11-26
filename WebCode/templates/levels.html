@@ -37,6 +37,22 @@
     clear: both;
 }
 </style>
+    {% for chat, chat_contents in stuff.items%}
+        <div class="switch">
+        {{ chat }}
+        </div>
+        {% for user_level in chat_contents%}
+            <div class="column tag">
+                {{ user_level.userid.username }}
+                </div>
+                <div class="column quote">
+                {{ user_level.level }}
+                </div>
+                <div class ="column user">
+                {{ user_level.exp }}
+                </div>
+        {% endfor %}
+    {% endfor %}
 
     {% for chat, chatter in my_dict.items%}
         <div class="switch">

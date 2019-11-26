@@ -34,20 +34,17 @@
     clear: both;
 }
 </style>
-{% for tag, quote  in quotes.items %}
-    {% for text, user in quote.items %}
-
+{% for quote  in quotes %}
     <div class="column tag">
-    <p>{{tag}}</p>
+    <p>{{quote.tag}}</p>
     </div>
 
     <div class="column quote">
-    <p>{{text}}</p>
+    <p>{{quote.quote}}</p>
     </div>
 
     <div class ="column user">
-    <p>{{ user }}</p>
+    <p>{{ quote.userid.username }}</p>
     </div>
-    {% endfor %}
 {% endfor %}
 {% endblock %}
