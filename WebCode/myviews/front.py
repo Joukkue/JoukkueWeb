@@ -90,7 +90,7 @@ def signup(request):
 
 
 def get_levels(request):
-    levels = Levels.objects.all().order_by('-level').order_by('-exp')
+    levels = Levels.objects.all().order_by('-level', '-exp')
     chats = TelegramChat.objects.all()
     dictionary = {}
     for chat in chats:
