@@ -2,10 +2,25 @@ from django.http import HttpResponse, JsonResponse
 from WebCode.models import Quote, TelegramUser
 from django.db import IntegrityError
 
+
 def getQuote(request, tag):
-    q = Quote.objects.get(tag=tag)
-    message = q.quote + '\n@' + q.userid.username
+    try:
+        q = Quote.objects.get(tag=tag)
+        message = q.quote + '\n@' + q.userid.username
+    except Quote.DoesNotExist:
+        "The fuck"
+        message = "No quote found with the provided tag"
     context = {'message':message}
+    return JsonResponse(context)
+
+
+def randomQuote(request):
+    q = Quote.objects.order_by("?").first()
+    if q:
+        message = q.quote + '\n@' + q.userid.username
+    else:
+        message = "No quotes found"
+    context = {'message': message}
     return JsonResponse(context)
 
 
